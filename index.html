@@ -7,16 +7,23 @@
     <title>Monster Game</title>
   </head>
   <body>
+    <header><h2>Fight the Monster</h2></header>
     <main>
       <div id="app">
         <div class="bar">
           <div class="container1">
             <h2>user</h2>
-            <div class="progress-bar1"><div class="life1" :style="{width: life1 + '%'}"></div></div>
+            <div class="progress-bar1">
+              <h1>{{this.life1}}</h1>
+              <div class="life1" :style="{width: life1 + '%'}"></div>
+            </div>
           </div>
           <div class="container2">
             <h2>monster</h2>
-            <div class="progress-bar2"><div class="life2" :style="{width: life2 + '%'}"></div></div>
+            <div class="progress-bar2">
+              <h1>{{this.life2}}</h1>
+              <div class="life2" :style="{width: life2 + '%'}"></div>
+            </div>
           </div>
         </div>
         <div class="punch-div">
@@ -24,6 +31,9 @@
         </div>
       </div>
     </main>
+    <footer>
+      <h2>Designed By <a href="#">Emeka</a></h2>
+    </footer>
 
     <script src="./js/vue.js"></script>
     <script src="./js/app.js"></script>

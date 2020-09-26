@@ -10,31 +10,34 @@ new Vue({
       let randomNum = Math.round(Math.random() * 10) + 10;
       return randomNum;
     },
-    punch() {
+    timer() {
       setTimeout(() => {
-        this.life2 -= this.randomNumber();
-        if (this.life2 < 1) {
+        this.life1 = 100;
+        this.life2 = 100;
+      }, 500);
+    },
+    punch() {
+      // ! display 0 instead of minus sign on the screen
+      this.life2 -= this.randomNumber();
+      setTimeout(() => {
+        this.life1 -= this.randomNumber();
+      }, 300);
+      setTimeout(() => {
+        if (this.life1 < 1 && this.life2 < 1) {
+          alert("draw!!!");
+          this.timer();
+        } else if (this.life2 < 1) {
           this.life2 = 0;
           setTimeout(() => alert("Monster Loss"), 500);
-          setTimeout(() => {
-            this.life1 = 100;
-            this.life2 = 100;
-          }, 1000);
+          this.timer();
+        } else if (this.life1 < 1) {
+          this.life1 = 0;
+          setTimeout(() => alert("User Loss"), 500);
+          this.timer();
         }
         console.log("Monster Punch" + " " + this.randomNumber());
-        console.log("Monster Life" + " " + this.life2);
-      }, 0);
-      this.life1 -= this.randomNumber();
-      if (this.life1 < 1) {
-        this.life1 = 0;
-        setTimeout(() => alert("User Loss"), 500);
-        setTimeout(() => {
-          this.life1 = 100;
-          this.life2 = 100;
-        }, 1000);
-      }
-      console.log("User Life" + " " + this.life1);
-      console.log("User Punch" + " " + this.randomNumber());
+        console.log("User Punch" + " " + this.randomNumber());
+      }, 400);
     },
   },
 });
